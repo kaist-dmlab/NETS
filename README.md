@@ -7,7 +7,7 @@ TBD
 TBD
 
 ## 3. Data Sets
-| Name    | # data points  | # Dim    | Size    | Link (TBD)     |
+| Name    | # data points  | # Dim    | Size (TBD)   | Link (TBD)     |
 | :-----: | :------------: | :------: |:-------:|:--------------:|
 | GAU     | 1M             | 1        |  MB  |[link](http://) |
 | STK     | 1.05M          | 1        |  MB |[link](http://) |
