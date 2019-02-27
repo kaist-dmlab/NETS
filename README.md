@@ -25,7 +25,42 @@ TBD
 | FC      | 1M             | 55       |  72.2MB  |[link](https://infolab.usc.edu/Luan/Outlier/Datasets/fc.data) |
 
 ## 4. Configuration
-- Compile: 
+- Compile
+```
+cd ~/NETS/src
+javac test/testBase.java
+```
 
 ## 5. How to run
-TBD
+- Parameter options
+```
+--dataset: title of datasets (string, one of {GAU, STK, TAO, HPC, GAS, EM, FC})
+--W: the size of a window (integer)
+--S: the size of a slide (integer)
+--R: the distance threshold (double)
+--K: the number of neighbors threshold (integer)
+--D: the number of full dimensions (integer)
+--sD: the number of sub dimensions (integer)
+--nW: the number of windows (integer)
+```
+
+- Run
+```
+cd ~/NETS/src
+java test.testBase --dataset TAO --W 10000 --S 500 --R 1.9 --K 50 --D 3 --sD 3 --nW 1
+```
+- Check result
+```
+cd ~/NETS/src/Result
+cat Result_TAO_NETS_D3_sD3_rand0_R1.9_K50_S500_W10000_nW1.txt
+At window 0, # outliers: 169
+# Dataset: TAO
+Method: NETS
+Dim: 3
+subDim: 3
+subDimRandom: 0
+R/K/W/S: 1.9/50/10000/500
+# of windows: 1
+Avg CPU time(s) 	 Peak memory(MB)
+0.0025	4.3
+```
