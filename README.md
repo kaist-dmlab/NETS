@@ -58,7 +58,6 @@ At window 0, # outliers: 169
 Method: NETS
 Dim: 3
 subDim: 3
-subDimRandom: 0
 R/K/W/S: 1.9/50/10000/500
 # of windows: 1
 Avg CPU time(s) 	 Peak memory(MB)
