@@ -25,7 +25,7 @@ This paper addresses the problem of efficiently detecting outliers from a data s
 | FC      | 1M             | 55       |  72.2MB  |[link](https://infolab.usc.edu/Luan/Outlier/Datasets/fc.data) |
 
 ## 4. Configuration
-NETS algorithm was implemented in the Java and run on JDK 1.8.0_191.
+NETS algorithm was implemented in the Java and run on **JDK 1.8.0_191.**
 - Compile
 ```
 cd ~/NETS/src
