@@ -1,10 +1,10 @@
-# NETS
+# NETS:Extremely Fast Outlier Detection from a Data Stream via Set-Based Processing
 
 ## 1. Overview
-TBD
+This paper addresses the problem of efficiently detecting outliers from a data stream as old data points expire from and new data points enter the window incrementally. The proposed method is based on a newly discovered characteristic of a data stream, that is, the change in the locations of data points in the data space is typically very insignificant. This observation has led to the finding that the existing distance-based outlier detection algorithms perform excessive unnecessary computations that are repetitive and/or cancelling out the effects. Thus, in this paper, we propose a novel *set-based* approach to detecting outliers, whereby data points at similar locations are grouped and the detection of outliers or inliers is handled at the group level. Specifically, a new algorithm NETS is proposed to achieve a remarkable performance improvement by realizing set-based early identification of outliers or inliers and taking advantage of the "net effect" between expired data points and new data points. Additionally, NETS is capable of achieving the same efficiency even for a high-dimensional data stream through *two dimensional-level filtering*.  Comprehensive experiments using six real-world data streams show 5 to 150 times faster processing time than state of the art algorithms with comparable memory consumption. We assert that NETS opens a new possibility to real-time data stream outlier detection.
 
 ## 2. Algorithms
-- NETS: our algorithm 
+- **NETS**: our algorithm 
 - MCOD [1]([source code[3]](https://infolab.usc.edu/Luan/Outlier/CountBasedWindow/DODDS/))
 - LEAP [2]([source code[3]](https://infolab.usc.edu/Luan/Outlier/CountBasedWindow/DODDS/))
 
