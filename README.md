@@ -45,12 +45,12 @@ javac test/testBase.java
 --nW: the number of windows (integer)
 ```
 
-- Run
+- Run a sample experiment
 ```
 cd ~/NETS/src
 java test.testBase --dataset TAO --W 10000 --S 500 --R 1.9 --K 50 --D 3 --sD 3 --nW 1
 ```
-- Check result
+- Check the result
 ```
 cd ~/NETS/src/Result
 cat Result_TAO_NETS_D3_sD3_rand0_R1.9_K50_S500_W10000_nW1.txt
