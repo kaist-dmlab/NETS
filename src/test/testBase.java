@@ -33,6 +33,7 @@ public class testBase {
 		
 	public static MeasureMemoryThread mesureThread = new MeasureMemoryThread();
 		
+	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws IOException {
 		loadArgs(args);
 		StreamGenerator streamGen = new StreamGenerator(dataset, randSubDim);
@@ -53,7 +54,7 @@ public class testBase {
 			if (newSlideTuples.isEmpty()) break;
 			long startTime = Utils.getCPUTime();
 			detector.calcNetChange(newSlideTuples, itr);	/* Calculate net-changes*/
-			detector.findOutlier(method, itr);				/* Finding outliers */
+			detector.findOutlier(method, itr);				/* Find outliers */
 			long endTime = Utils.getCPUTime();
 			
 			// CPU & Memory 
