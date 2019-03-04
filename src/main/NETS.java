@@ -7,8 +7,6 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import utils.Utils;
-
 public class NETS {
 	public double R;
 	public int K;
@@ -41,7 +39,6 @@ public class NETS {
 	public HashSet<Integer> influencedCells;
 	
 	public int candidateCellsTupleCnt = 0;
-	public long Step2Time = 0;
 		
 	public NETS(int dim, int subDim, double R, int K, int S, int W, int nW, double[] maxValues, double[] minValues) {
 		this.dim = dim;
@@ -316,15 +313,12 @@ public class NETS {
 	
 	public void findOutlierNETS(int itr) {
 		// Get influenced cells by changes
-		long infCellStart = Utils.getCPUTime();
 		getInfCellIndices();
-		Step2Time += Utils.getCPUTime() - infCellStart;
 		
 		// for each influenced cell 
 		InfCellLoop:
 		for (Integer infCellIdx: influencedCells) {
 			
-			long neighCellStart = Utils.getCPUTime();
 			//find neighbor cells
 			candidateCellsTupleCnt = 0;
 			ArrayList<Integer> candCellIndices = getSortedCandidateCellIndices(infCellIdx);		
@@ -337,8 +331,6 @@ public class NETS {
 				}
 				continue InfCellLoop;
 			}
-			Step2Time += Utils.getCPUTime() - neighCellStart;
-
 			
 			//get candidate tuples
 			HashSet<Tuple> candOutlierTuples = new HashSet<Tuple>();			
@@ -374,10 +366,9 @@ public class NETS {
 					}
 											
 					CellLoop:
-					//for(ArrayList<Integer> otherCellIdx: currentSlide.keySet()) {
 					for(Integer otherCellIdx: candCellIndices) {
 						if(!currentSlide.containsKey(otherCellIdx) 
-							|| !neighboringTupleSet(tCand.value, currentSlide.get(otherCellIdx).cellCenter, 1.5*R)) //check if subdim is still ok with this
+							|| !neighboringTupleSet(tCand.value, currentSlide.get(otherCellIdx).cellCenter, 1.5*R)) 
 							continue CellLoop;
 						
 						HashSet<Tuple> otherTuples = new HashSet<Tuple>();
