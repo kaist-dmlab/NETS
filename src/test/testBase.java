@@ -46,18 +46,18 @@ public class testBase {
 			printType = "File";
 		}
 		
-		/* Simulating sliding windows */
+	/* Simulate sliding windows */
         mesureThread.start();
         int itr = 0;
 		do {
 			newSlideTuples = streamGen.getNewSlideTuples(itr, S);
 			if (newSlideTuples.isEmpty()) break;
 			long startTime = Utils.getCPUTime();
-			detector.calcNetChange(newSlideTuples, itr);	/* Calculate net-changes*/
-			detector.findOutlier(method, itr);				/* Find outliers */
+			detector.calcNetChange(newSlideTuples, itr);	/* Calculate net effect*/
+			detector.findOutlier(method, itr);		/* Find outliers */
 			long endTime = Utils.getCPUTime();
 			
-			// CPU & Memory 
+			// Save CPU time & Peak memory
 			if(itr>=nS-1) {
 				if (printType =="File") fw.write("At window " +(itr-nS+1)+", "+"# outliers: "+detector.outliers.size()+"\n");
 				allTimeSum += ((endTime-startTime)/100000)/10000d;
