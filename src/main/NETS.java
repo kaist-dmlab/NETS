@@ -224,6 +224,7 @@ public class NETS {
 	public void getInfCellIndices() {
 		influencedCells = new HashSet<Integer>();
 		for (Integer cellIdxWin:windowCnt.keySet()) {
+			//verify if inlier cell
 			if (!subDimFlag && windowCnt.get(cellIdxWin) > K) {
 				continue;
 			}
@@ -312,13 +313,12 @@ public class NETS {
 	}
 	
 	public void findOutlierNETS(int itr) {
-		// Get influenced cells by changes
+		// Will not return inlier cells and not influenced cells
 		getInfCellIndices();
 		
-		// for each influenced cell 
+		// for each cell 
 		InfCellLoop:
 		for (Integer infCellIdx: influencedCells) {
-			
 			//find neighbor cells
 			candidateCellsTupleCnt = 0;
 			ArrayList<Integer> candCellIndices = getSortedCandidateCellIndices(infCellIdx);		
@@ -332,7 +332,7 @@ public class NETS {
 				continue InfCellLoop;
 			}
 			
-			//get candidate tuples
+			//for each tuples in a non-determined cell
 			HashSet<Tuple> candOutlierTuples = new HashSet<Tuple>();			
 			for(HashMap<Integer, Cell> slide: slides) {
 				if(!slide.containsKey(infCellIdx)) continue;
@@ -350,6 +350,7 @@ public class NETS {
 				}
 			}
 			
+			//for each non-determined tuples
 			TupleLoop:
 			for (Tuple tCand:candOutlierTuples) {
 				Iterator<HashMap<Integer, Cell>> slideIterator = slides.descendingIterator();
@@ -373,6 +374,7 @@ public class NETS {
 						
 						HashSet<Tuple> otherTuples = new HashSet<Tuple>();
 						if(subDimFlag) {
+							//reduce search space using sub-dims
 							for(Cell allIdxCell: currentSlide.get(otherCellIdx).childCells.values()) {
 								if(!allIdxCell.cellIdx.equals(tCand.fullDimCellIdx) 
 								   && neighboringSet(allIdxCell.cellIdx, tCand.fullDimCellIdx))
