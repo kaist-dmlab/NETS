@@ -26,9 +26,6 @@ public class testBase {
 	public static String printType = "Console";
 	
 	public static double allTimeSum = 0;
-	public static double step1TimeSum = 0;
-	public static double step2TimeSum = 0;
-	public static double step3TimeSum = 0;
 	public static double peakMemory = 0; 
 		
 	public static MeasureMemoryThread mesureThread = new MeasureMemoryThread();
